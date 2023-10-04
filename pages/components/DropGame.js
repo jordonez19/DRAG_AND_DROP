@@ -88,12 +88,12 @@ function DropDagme({ contador, setContador, answers, question }) {
       </h2>
 
       <div className="App">
-        <div className="container" onDragOver={handleDragOver}>
+        <div className="container d-flex" onDragOver={handleDragOver}>
           {contador > 0 ? (
             <>
               {items.map((item, index) => (
                 <p
-                  className={`draggable ${
+                  className={`draggable  ${
                     item.id === draggingElement ? "dragging" : ""
                   }`}
                   draggable="true"
