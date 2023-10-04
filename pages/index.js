@@ -1,15 +1,14 @@
-import Head from 'next/head'
-import DropDagme from './components/DropGame'
-import React, { useState, useEffect } from 'react';
-import { questionsandanswers } from './data'
+import Head from "next/head";
+import DropDagme from "./components/DropGame";
+import React, { useState, useEffect } from "react";
+import { questionsandanswers } from "./data";
 export default function Home() {
-  const [contador, setContador] = useState(6)
+  const [contador, setContador] = useState(0);
 
-  const QA = questionsandanswers.find((qa) => qa.id === contador)
+  const QA = questionsandanswers.find((qa) => qa.id === contador);
 
-  const question = QA ? QA.question : ''
-  const answers = QA ? QA.answers : []
-
+  const question = QA ? QA.question : "";
+  const answers = QA ? QA.answers : [];
 
   return (
     <>
@@ -20,19 +19,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-
         <DropDagme
           contador={contador}
           setContador={setContador}
           question={question}
           answers={answers}
         />
-
-        {/*  <button onClick={() => setContador(contador + 1)}>+</button> */}
-        <div className='center'>
-          <button onClick={() => setContador(0)}>Reiniciar juego</button>
-        </div>
+        {contador !== 0 ? (
+          <div className="center">
+            <button onClick={() => setContador(0)}>Reiniciar juego</button>
+          </div>
+        ) : null}
       </>
     </>
-  )
+  );
 }

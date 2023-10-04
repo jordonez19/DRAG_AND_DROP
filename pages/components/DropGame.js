@@ -85,8 +85,8 @@ function DropDagme({ contador, setContador, answers, question }) {
       <h2 className="text-center">
         {" "}
         {contador > 0 ? question : "Que Empiece El Juego"}
-          </h2>
-          
+      </h2>
+
       <div className="App">
         <div className="container" onDragOver={handleDragOver}>
           {contador > 0 ? (
@@ -109,37 +109,45 @@ function DropDagme({ contador, setContador, answers, question }) {
           ) : null}
 
           {contador === 0 ? (
-            <button
-              style={{ margin: 85 }}
-              onClick={() => {
-                setContador(contador + 1);
-              }}
-            >
-              {" "}
-              Jugar
-            </button>
+            <>
+              <p className="center light">
+                Organiza de manera correcta los comandos de git para podder
+                continuar{" "}
+              </p>
+              <button
+                style={{ margin: "auto", width: "100%" }}
+                onClick={() => {
+                  setContador(contador + 1);
+                }}
+              >
+                {" "}
+                Jugar
+              </button>
+            </>
           ) : contador === 6 ? (
             <h1 className="light">Felicitaciones Ganaste un premio...</h1>
           ) : null}
         </div>
       </div>
-      <div className="center">
-        <button
-          disabled={disabledBtn}
-          className={disabledBtn ? "lightgrayBtn" : "greenBtn"}
-          onClick={() => {
-            setContador(contador + 1);
-            setDisabledBtn(true); // Deshabilitar el botón
-            // Remover las clases 'green-border' y 'red-border' de los elementos
-            document.querySelectorAll(".draggable").forEach((item) => {
-              item.classList.remove("green-border");
-              item.classList.remove("red-border");
-            });
-          }}
-        >
-          Continuar
-        </button>
-      </div>
+      {contador !== 0 ? (
+        <div className="center">
+          <button
+            disabled={disabledBtn}
+            className={disabledBtn ? "lightgrayBtn" : "greenBtn"}
+            onClick={() => {
+              setContador(contador + 1);
+              setDisabledBtn(true); // Deshabilitar el botón
+              // Remover las clases 'green-border' y 'red-border' de los elementos
+              document.querySelectorAll(".draggable").forEach((item) => {
+                item.classList.remove("green-border");
+                item.classList.remove("red-border");
+              });
+            }}
+          >
+            Continuar
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }
